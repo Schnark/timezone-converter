@@ -1,0 +1,16 @@
+{
+	"version": "1.0",
+	"name": "Timezone Converter",
+	"description": "Convert between timezones",
+	"size": 60140,
+	"package_path": "http://localhost:8080/timezone-converter.zip",
+	"icons": {
+		"128": "/res/icon-128.png",
+		"512": "/res/icon-512.png"
+	},
+	"developer": {
+		"name": "Michael Müller",
+		"url": "https://github.com/Schnark"
+	},
+	"default_locale": "en"
+}

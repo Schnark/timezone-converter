@@ -1,0 +1,16 @@
+{
+	"@comment": "Note that the code to transform these data into a webpage is in https://github.com/Schnark/schnark.github.io",
+	"title": {
+		"en": "Timezone Converter – App for Firefox OS",
+		"de": "Timezone Converter – App für Firefox OS"
+	},
+	"serviceworker": true,
+	"icon": "res/icon-128.png",
+	"screenshots": [
+		"screenshot.png"
+	],
+	"desc": {
+		"en": ["This app allows you to convert between different timezones, including daylight saving time."],
+		"de": ["Diese App rechnet zwischen verschidenen Zeitzonen um, einschließlich Sommerzeit."]
+	}
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>Timezone Converter</title>
+<meta name="viewport" content="width=device-width">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+<link rel="manifest" href="icons/manifest.json">
+<link rel="shortcut icon" href="icons/favicon.ico">
+<meta name="msapplication-config" content="icons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+<script>
+if (navigator.serviceWorker && !(navigator.mozApps && navigator.mozApps.installPackage)) {
+	navigator.serviceWorker.register('sw.js');
+}
+</script>
+<script src="res/lib/moment.min.js"></script>
+<script src="res/lib/moment-timezone-with-data-2012-2022.min.js"></script>
+<style>
+html {
+	font-family: sans-serif;
+	line-height: 1.7;
+}
+
+input,
+select {
+	font: inherit;
+}
+
+[type="date"] {
+	width: 10ch;
+}
+
+[type="time"] {
+	width: 5ch;
+}
+
+select {
+	max-width: calc(100% - 18ch);
+}
+
+li select {
+	max-width: 90%;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style-position: inside;
+}
+</style>
+</head><body>
+<form autocomplete="off">
+<fieldset>
+<legend>Time to convert</legend>
+<input type="radio" name="type" id="current-time" checked>&nbsp;<label for="current-time">Current time</label><br>
+<input type="radio" name="type" id="specific-time">&nbsp;<label for="specific-time">Specific time:</label><br>
+<input type="date" id="specific-time-date" min="2012-01-01" max="2022-12-31">&nbsp;<input type="time" id="specific-time-time">&nbsp;<select id="specific-time-zone"><option selected>UTC</option></select>
+</fieldset>
+<fieldset>
+<legend>Timezones to convert to</legend>
+<ul>
+<li>UTC</li>
+<li>Local (<span id="local-name"></span>)</li>
+<li><select id="time-zone"><option selected>UTC</option></select></li>
+</ul>
+</fieldset>
+<fieldset>
+<legend>Converted times</legend>
+<ul>
+<li id="output-utc"></li>
+<li id="output-local"></li>
+<li id="output-zone"></li>
+</ul>
+</fieldset>
+</form>
+<script src="res/app.js"></script>
+</body></html>
