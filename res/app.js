@@ -1,7 +1,7 @@
 /*global moment*/
 (function () {
 "use strict";
-var dom = {}, shouldUpdateInput = true;
+var dom = {}, shouldUpdateInput = true, currentSelect;
 
 function getStoredZone () {
 	try {
@@ -54,6 +54,7 @@ function onTypeChange () {
 	dom.specificTimeDate.disabled = disabled;
 	dom.specificTimeTime.disabled = disabled;
 	dom.specificTimeZone.disabled = disabled;
+	dom.specificTimeMap.disabled = disabled;
 	if (!disabled && shouldUpdateInput) {
 		current = moment();
 		dom.specificTimeDate.value = current.format('YYYY-MM-DD');
@@ -71,6 +72,23 @@ function updateOutput () {
 	dom.outputZone.innerHTML = formatTime(mom, dom.timeZone.value);
 }
 
+function showMap (select) {
+	currentSelect = select;
+	dom.map.contentWindow.postMessage(dom[select].value, '*');
+	dom.mapContainer.style.display = '';
+}
+
+function mapClick (id) {
+	dom[currentSelect].value = id;
+	setStoredZone();
+	updateOutput();
+	hideMap();
+}
+
+function hideMap () {
+	dom.mapContainer.style.display = 'none';
+}
+
 function bind (elements, events, handler) {
 	elements.forEach(function (element) {
 		events.forEach(function (event) {
@@ -85,15 +103,21 @@ function init () {
 	dom.specificTimeDate = document.getElementById('specific-time-date');
 	dom.specificTimeTime = document.getElementById('specific-time-time');
 	dom.specificTimeZone = document.getElementById('specific-time-zone');
+	dom.specificTimeMap = document.getElementById('specific-time-map');
 	dom.localName = document.getElementById('local-name');
 	dom.timeZone = document.getElementById('time-zone');
+	dom.timeMap = document.getElementById('time-map');
 	dom.outputUtc = document.getElementById('output-utc');
 	dom.outputLocal = document.getElementById('output-local');
 	dom.outputZone = document.getElementById('output-zone');
+	dom.mapContainer = document.getElementById('map-container');
+	dom.mapClose = document.getElementById('map-close');
+	dom.map = document.getElementById('map');
 
 	fillTimezoneSelect(dom.specificTimeZone);
 	fillTimezoneSelect(dom.timeZone, getStoredZone());
 	onTypeChange();
+	hideMap();
 
 	bind(
 		[dom.currentTime, dom.specificTime],
@@ -119,6 +143,35 @@ function init () {
 			updateOutput();
 		}
 	);
+	bind(
+		[dom.specificTimeMap],
+		['click'],
+		function () {
+			showMap('specificTimeZone');
+		}
+	);
+	bind(
+		[dom.timeMap],
+		['click'],
+		function () {
+			showMap('timeZone');
+		}
+	);
+	bind(
+		[dom.mapClose],
+		['click'],
+		function () {
+			hideMap();
+		}
+	);
+	bind(
+		[window],
+		['message'],
+		function (e) {
+			mapClick(e.data);
+		}
+	);
+
 	//even with static time, output can change, when DST starts or ends
 	setInterval(updateOutput, 5000);
 	updateOutput();

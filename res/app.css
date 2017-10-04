@@ -1,0 +1,66 @@
+html {
+	font-family: sans-serif;
+	line-height: 1.7;
+}
+
+input,
+select {
+	font: inherit;
+	line-height: normal; /*line-height doesn't work for select on Firefox OS, so revert all elements to normal height*/
+}
+
+[type="date"] {
+	width: 10ch;
+}
+
+[type="time"] {
+	width: 5ch;
+}
+
+[type="button"] {
+	width: 4ch;
+}
+
+select {
+	max-width: calc(100% - 22ch);
+}
+
+li select {
+	max-width: calc(90% - 4ch);
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style-position: inside;
+}
+
+#map-container {
+	margin: 1px;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: white;
+	border: 1px solid black;
+	border-radius: 10px;
+	box-shadow: 0 0 2px black;
+	overflow: auto;
+}
+
+#map-close {
+	position: absolute;
+	right: 5px;
+	top: 5px;
+}
+
+iframe {
+	border: none;
+	margin: 0;
+	padding: 0;
+	overflow: auto;
+	width: 100%;
+	height: calc(100% - 8px);
+	min-width: 500px;
+}

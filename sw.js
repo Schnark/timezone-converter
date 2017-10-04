@@ -2,10 +2,12 @@
 (function (worker) {
 "use strict";
 
-var VERSION = 'v1.0',
+var VERSION = 'v1.1',
 	FILES = [
 		'index.html',
+		'res/app.css',
 		'res/app.js',
+		'res/tzmap.svg',
 		'res/lib/moment.min.js',
 		'res/lib/moment-timezone-with-data-2012-2022.min.js'
 	];
