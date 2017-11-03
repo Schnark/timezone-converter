@@ -58,7 +58,7 @@ function onTypeChange () {
 	if (!disabled && shouldUpdateInput) {
 		current = moment();
 		dom.specificTimeDate.value = current.format('YYYY-MM-DD');
-		dom.specificTimeTime.value = current.format('H:mm');
+		dom.specificTimeTime.value = current.format('HH:mm');
 	}
 }
 

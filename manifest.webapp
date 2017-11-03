@@ -1,5 +1,5 @@
 {
-	"version": "1.1",
+	"version": "1.2",
 	"name": "Timezone Converter",
 	"description": "Convert between timezones",
 	"launch_path": "/index.html",
