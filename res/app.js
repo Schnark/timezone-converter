@@ -46,7 +46,14 @@ function getInputTime () {
 }
 
 function formatTime (mom, tz) {
-	return mom.clone().tz(tz).format('H:mm z [<small>](Z, YYYY-MM-DD)[</small>]');
+	var origDate = mom.format('YYYY-MM-DD'),
+		tzMom = mom.clone().tz(tz),
+		tzDate = tzMom.format('YYYY-MM-DD'),
+		tzTime = tzMom.format('H:mm z'),
+		tzDiff = tzMom.format('Z'),
+		dateChangeStart = origDate === tzDate ? '' : '<span class="date-change">',
+		dateChangeEnd = origDate === tzDate ? '' : '</span>';
+	return tzTime + ' <small>(' + tzDiff + ', ' + dateChangeStart + tzDate + dateChangeEnd + ')</small>';
 }
 
 function onTypeChange () {

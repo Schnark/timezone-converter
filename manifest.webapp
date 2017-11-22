@@ -1,6 +1,6 @@
 {
-	"version": "1.2",
-	"name": "Timezone Converter",
+	"version": "1.3",
+	"name": "Time Zone Converter",
 	"description": "Convert between timezones",
 	"launch_path": "/index.html",
 	"icons": {
