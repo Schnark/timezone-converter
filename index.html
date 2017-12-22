@@ -16,8 +16,9 @@ if (navigator.serviceWorker && !(navigator.mozApps && navigator.mozApps.installP
 }
 </script>
 <link rel="stylesheet" href="res/app.css">
-<script src="res/lib/moment.min.js"></script>
-<script src="res/lib/moment-timezone-with-data-2012-2022.min.js"></script>
+<script src="res/lib/moment.min.js" defer></script>
+<script src="res/lib/moment-timezone-with-data-2012-2022.min.js" defer></script>
+<script src="res/app.js" defer></script>
 </head><body>
 <form autocomplete="off">
 <fieldset>
@@ -48,5 +49,4 @@ if (navigator.serviceWorker && !(navigator.mozApps && navigator.mozApps.installP
 <input type="button" value="x" id="map-close">
 <iframe id="map" src="res/tzmap.svg"></iframe>
 </div>
-<script src="res/app.js"></script>
 </body></html>

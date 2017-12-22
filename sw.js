@@ -2,14 +2,15 @@
 (function (worker) {
 "use strict";
 
-var VERSION = 'v1.3',
+var VERSION = 'v1.4',
 	FILES = [
 		'index.html',
 		'res/app.css',
 		'res/app.js',
 		'res/tzmap.svg',
 		'res/lib/moment.min.js',
-		'res/lib/moment-timezone-with-data-2012-2022.min.js'
+		'res/lib/moment-timezone-with-data-2012-2022.min.js',
+		'res/lib/panzoom.min.js'
 	];
 
 worker.addEventListener('install', function (e) {
