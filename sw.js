@@ -3,14 +3,14 @@
 "use strict";
 
 var PREFIX = 'timezone-converter',
-	VERSION = '1.7',
+	VERSION = '1.8',
 	FILES = [
 		'index.html',
 		'res/app.css',
 		'res/app.js',
 		'res/tzmap.svg',
 		'res/lib/moment.min.js',
-		'res/lib/moment-timezone-with-data-2012-2022.min.js',
+		'res/lib/moment-timezone-with-data-10-year-range.min.js',
 		'res/lib/panzoom.min.js'
 	];
 

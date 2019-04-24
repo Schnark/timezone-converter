@@ -179,7 +179,6 @@ function init () {
 		}
 	);
 
-	//even with static time, output can change, when DST starts or ends
 	setInterval(updateOutput, 5000);
 	updateOutput();
 	dom.localName.innerHTML = getLocalZone();
