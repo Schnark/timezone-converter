@@ -3,7 +3,7 @@
 "use strict";
 
 var PREFIX = 'timezone-converter',
-	VERSION = '1.8',
+	VERSION = '1.9',
 	FILES = [
 		'index.html',
 		'res/app.css',
