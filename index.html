@@ -25,7 +25,7 @@ if (navigator.serviceWorker && !(navigator.mozApps && navigator.mozApps.installP
 <legend>Time to convert</legend>
 <input type="radio" name="type" id="current-time" checked>&nbsp;<label for="current-time">Current time</label><br>
 <input type="radio" name="type" id="specific-time">&nbsp;<label for="specific-time">Specific time:</label><br>
-<input type="date" id="specific-time-date" min="2015-01-01" max="2025-12-31">&nbsp;<input type="time" id="specific-time-time">&nbsp;<select id="specific-time-zone"><option selected>UTC</option></select><input type="button" value="…" id="specific-time-map">
+<input type="date" id="specific-time-date" min="2016-01-01" max="2026-12-31">&nbsp;<input type="time" id="specific-time-time">&nbsp;<select id="specific-time-zone"><option selected>UTC</option></select><input type="button" value="…" id="specific-time-map">
 </fieldset>
 <fieldset>
 <legend>Time zones to convert to</legend>
@@ -44,7 +44,7 @@ if (navigator.serviceWorker && !(navigator.mozApps && navigator.mozApps.installP
 </ul>
 </fieldset>
 </form>
-<footer><small>Time zone data provided by <a rel="noopener" target="_blank" href="https://momentjs.com/timezone/">moment-timezone.js 0.5.31-2020a</a>.</small></footer>
+<footer><small>Time zone data provided by <a rel="noopener" target="_blank" href="https://momentjs.com/timezone/">moment-timezone.js 0.5.33-2021a</a>.</small></footer>
 <div id="map-container">
 <input type="button" value="x" id="map-close">
 <iframe id="map" src="res/tzmap.svg"></iframe>

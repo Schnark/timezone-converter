@@ -1,8 +1,8 @@
 {
-	"version": "1.11",
+	"version": "1.12",
 	"name": "Time Zone Converter",
 	"description": "Convert between time zones",
-	"size": 97812,
+	"size": 97707,
 	"package_path": "http://localhost:8080/timezone-converter.zip",
 	"icons": {
 		"128": "/res/icon-128.png",
