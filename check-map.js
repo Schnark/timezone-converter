@@ -91,9 +91,19 @@ function checkZone (zoneName, cls) {
 	}
 }
 
+function hasCommonElement (array1, array2) {
+	var i;
+	for (i = 0; i < array1.length; i++) {
+		if (array2.indexOf(array1[i]) > -1) {
+			return true;
+		}
+	}
+	return false;
+}
+
 function isSameZone (name1, name2) {
 	var zone1 = moment.tz.zone(name1), zone2 = moment.tz.zone(name2);
-	return zone1.countries().join('|') === zone2.countries().join('|') &&
+	return hasCommonElement(zone1.countries(), zone2.countries()) &&
 		zone1.untils.join('|') === zone2.untils.join('|') &&
 		zone1.offsets.join('|') === zone2.offsets.join('|');
 }
@@ -147,12 +157,12 @@ function checkMissingZones (usedZones) {
 		'Pacific/Chatham',
 		'Pacific/Chuuk',
 		'Pacific/Easter',
-		'Pacific/Enderbury',
 		'Pacific/Fakaofo',
 		'Pacific/Fiji', //actually large enough, but too far east
 		'Pacific/Funafuti',
 		'Pacific/Gambier',
 		'Pacific/Guam',
+		'Pacific/Kanton',
 		'Pacific/Kiritimati',
 		'Pacific/Kosrae',
 		'Pacific/Kwajalein',
@@ -287,8 +297,8 @@ function checkMissingZones (usedZones) {
 		'Australia/Hobart': 'Australia/Sydney',
 		'Australia/Lindeman': 'Australia/Brisbane',
 		'Australia/Melbourne': 'Australia/Sydney',
-		'Europe/Uzhgorod': 'Europe/Kiev',
-		'Europe/Zaporozhye': 'Europe/Kiev'
+		'Europe/Uzhgorod': 'Europe/Kyiv',
+		'Europe/Zaporozhye': 'Europe/Kyiv'
 	};
 	moment.tz.names().filter(function (name) {
 		return !usedZones[name];
