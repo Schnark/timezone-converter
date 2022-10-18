@@ -296,9 +296,7 @@ function checkMissingZones (usedZones) {
 		'Australia/Broken_Hill': 'Australia/Adelaide',
 		'Australia/Hobart': 'Australia/Sydney',
 		'Australia/Lindeman': 'Australia/Brisbane',
-		'Australia/Melbourne': 'Australia/Sydney',
-		'Europe/Uzhgorod': 'Europe/Kyiv',
-		'Europe/Zaporozhye': 'Europe/Kyiv'
+		'Australia/Melbourne': 'Australia/Sydney'
 	};
 	moment.tz.names().filter(function (name) {
 		return !usedZones[name];

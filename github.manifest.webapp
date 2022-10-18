@@ -1,8 +1,8 @@
 {
-	"version": "1.14",
+	"version": "1.15",
 	"name": "Time Zone Converter",
 	"description": "Convert between time zones",
-	"size": 97616,
+	"size": 97602,
 	"package_path": "https://schnark.github.io/timezone-converter/timezone-converter.zip",
 	"icons": {
 		"128": "/res/icon-128.png",
