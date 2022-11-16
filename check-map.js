@@ -91,21 +91,23 @@ function checkZone (zoneName, cls) {
 	}
 }
 
-function hasCommonElement (array1, array2) {
-	var i;
-	for (i = 0; i < array1.length; i++) {
-		if (array2.indexOf(array1[i]) > -1) {
-			return true;
-		}
-	}
-	return false;
+function isSameCountry (countries1, countries2) {
+	return countries1.join('|') === countries2.join('|') ||
+		(countries1.length === 1 && countries2.indexOf(countries1[0]) > -1) ||
+		(countries2.length === 1 && countries1.indexOf(countries2[0]) > -1);
 }
 
 function isSameZone (name1, name2) {
 	var zone1 = moment.tz.zone(name1), zone2 = moment.tz.zone(name2);
-	return hasCommonElement(zone1.countries(), zone2.countries()) &&
+	return isSameCountry(zone1.countries(), zone2.countries()) &&
 		zone1.untils.join('|') === zone2.untils.join('|') &&
 		zone1.offsets.join('|') === zone2.offsets.join('|');
+}
+
+function isSameZoneFuture (name1, name2) {
+	var zone1 = moment.tz.zone(name1), zone2 = moment.tz.zone(name2);
+	return isSameCountry(zone1.countries(), zone2.countries()) &&
+		getClass(zone1) === getClass(zone2);
 }
 
 function checkMissingZones (usedZones) {
@@ -195,31 +197,19 @@ function checkMissingZones (usedZones) {
 		'Antarctica/Syowa',
 		'Antarctica/Troll',
 		'Antarctica/Vostok',
-		//Zone changes for some regions (too lazy to split the map, most areas are small, anyway)
-		//some changed several times, only last change is noted
-		//move them to "links" as soon as they fall out of the 10 year range
-		//Russia 2011
-		'Asia/Novokuznetsk', //Asia/Novosibirsk
-		//Russia 2014
-		'Asia/Khandyga', //Asia/Chita
-		'Asia/Krasnoyarsk', //Asia/Novosibirsk
-		'Asia/Srednekolymsk', //Asia/Magadan
-		'Asia/Yakutsk', //Asia/Chita
-		'Europe/Kirov', //Europe/Moscow
-		//Russia 2016
-		'Asia/Barnaul', //Asia/Novosibirsk
-		'Asia/Sakhalin', //Asia/Magadan
-		'Asia/Tomsk', //Asia/Novosibirsk
-		'Europe/Astrakhan', //Europe/Samara
-		'Europe/Saratov', //Europe/Samara
-		'Europe/Ulyanovsk', //Europe/Samara
-		//Kazakhstan 2018
-		'Asia/Qyzylorda', //Asia/Aqtobe
-		//United States 2019
-		'America/Metlakatla', //America/Anchorage
 		//other
 		'Asia/Urumqi' //used together with Asia/Shanghai
-	], links = {
+	], futureLinks = {
+		//Zone changes for some regions (too lazy to split the map, most areas are small, anyway)
+		//some changed several times, only last change is noted
+		//move them to "links" as soon as they fall out of the ±5 year range
+		//Kazakhstan 2018
+		'Asia/Qyzylorda': 'Asia/Aqtobe',
+		//United States 2019
+		'America/Metlakatla': 'America/Anchorage',
+		//Mexico 2022
+		'America/Mazatlan': 'America/Hermosillo'
+	}, links = {
 		'America/Araguaina': 'America/Fortaleza',
 		'America/Argentina/Catamarca': 'America/Argentina/Buenos_Aires',
 		'America/Argentina/Cordoba': 'America/Argentina/Buenos_Aires',
@@ -260,48 +250,56 @@ function checkMissingZones (usedZones) {
 		'America/Kentucky/Louisville': 'America/New_York',
 		'America/Kentucky/Monticello': 'America/New_York',
 		'America/Maceio': 'America/Fortaleza',
-		'America/Mazatlan': 'America/Chihuahua',
 		'America/Menominee': 'America/Chicago',
 		'America/Merida': 'America/Mexico_City',
 		'America/Moncton': 'America/Halifax',
 		'America/Monterrey': 'America/Mexico_City',
-		'America/Nipigon': 'America/Toronto',
 		'America/Nome': 'America/Anchorage',
 		'America/North_Dakota/Beulah': 'America/Chicago',
 		'America/North_Dakota/Center': 'America/Chicago',
 		'America/North_Dakota/New_Salem': 'America/Chicago',
 		'America/Pangnirtung': 'America/Toronto',
 		'America/Porto_Velho': 'America/Manaus',
-		'America/Rainy_River': 'America/Winnipeg',
 		'America/Rankin_Inlet': 'America/Winnipeg',
 		'America/Recife': 'America/Fortaleza',
 		'America/Resolute': 'America/Winnipeg',
 		'America/Santarem': 'America/Fortaleza',
 		'America/Sitka': 'America/Anchorage',
 		'America/Swift_Current': 'America/Regina',
-		'America/Thunder_Bay': 'America/Toronto',
 		'America/Yakutat': 'America/Anchorage',
 		'America/Yellowknife': 'America/Edmonton',
 		'Asia/Anadyr': 'Asia/Kamchatka',
 		'Asia/Aqtau': 'Asia/Aqtobe',
 		'Asia/Atyrau': 'Asia/Aqtobe',
+		'Asia/Barnaul': 'Asia/Novosibirsk',
 		'Asia/Choibalsan': 'Asia/Ulaanbaatar',
 		'Asia/Hebron': 'Asia/Gaza',
+		'Asia/Khandyga': 'Asia/Chita',
+		'Asia/Krasnoyarsk': 'Asia/Novosibirsk',
 		'Asia/Kuching': 'Asia/Kuala_Lumpur',
+		'Asia/Novokuznetsk': 'Asia/Novosibirsk',
 		'Asia/Oral': 'Asia/Aqtobe',
 		'Asia/Pontianak': 'Asia/Jakarta',
 		'Asia/Qostanay': 'Asia/Almaty',
+		'Asia/Sakhalin': 'Asia/Magadan',
 		'Asia/Samarkand': 'Asia/Tashkent',
+		'Asia/Srednekolymsk': 'Asia/Magadan',
+		'Asia/Tomsk': 'Asia/Novosibirsk',
 		'Asia/Ust-Nera': 'Asia/Vladivostok',
+		'Asia/Yakutsk': 'Asia/Chita',
 		'Australia/Broken_Hill': 'Australia/Adelaide',
 		'Australia/Hobart': 'Australia/Sydney',
 		'Australia/Lindeman': 'Australia/Brisbane',
-		'Australia/Melbourne': 'Australia/Sydney'
+		'Australia/Melbourne': 'Australia/Sydney',
+		'Europe/Astrakhan': 'Europe/Samara',
+		'Europe/Kirov': 'Europe/Moscow',
+		'Europe/Saratov': 'Europe/Samara',
+		'Europe/Ulyanovsk': 'Europe/Samara'
 	};
 	moment.tz.names().filter(function (name) {
 		return !usedZones[name];
 	}).filter(function (name) {
-		return omitted.indexOf(name) === -1 && !links[name] && !isDeprecated(moment.tz.zone(name));
+		return omitted.indexOf(name) === -1 && !futureLinks[name] && !links[name] && !isDeprecated(moment.tz.zone(name));
 	}).forEach(function (name) {
 		warn('<code>' + name + '</code> is not used in the map!');
 	});
@@ -309,6 +307,21 @@ function checkMissingZones (usedZones) {
 		return isDeprecated(moment.tz.zone(name));
 	}).forEach(function (name) {
 		warn('<code>' + name + '</code> is listed as omitted though it is deprecated!');
+	});
+	Object.keys(futureLinks).forEach(function (name) {
+		if (!usedZones[futureLinks[name]]) {
+			warn('<code>' + futureLinks[name] + '</code> ' +
+				'(used as future substitute for <code>' + name + '</code>) is not used in the map!');
+		}
+		if (!isSameZoneFuture(name, futureLinks[name])) {
+			warn('<code>' + name + '</code> and <code>' + futureLinks[name] + '</code> differ currently!');
+		}
+		if (isDeprecated(moment.tz.zone(name))) {
+			warn('<code>' + name + '</code> has a future link entry though it is deprecated!');
+		}
+		if (isSameZone(name, futureLinks[name])) {
+			warn('<code>' + name + '</code> and <code>' + futureLinks[name] + '</code> can be made links now!');
+		}
 	});
 	Object.keys(links).forEach(function (name) {
 		if (!usedZones[links[name]]) {
@@ -361,8 +374,8 @@ function checkMap (xml) {
 	if (isSameZone('America/Fortaleza', 'America/Sao_Paulo')) {
 		warn('Merge <code>America/Fortaleza</code> and <code>America/Sao_Paulo</code>!');
 	}
-	if (isSameZone('America/Mexico_City', 'America/Matamoros')) {
-		warn('Merge <code>America/Mexico_City</code> and <code>America/Matamoros</code>!');
+	if (isSameZone('America/Mexico_City', 'America/Chihuahua')) {
+		warn('Merge <code>America/Mexico_City</code> and <code>America/Chihuahua</code>!');
 	}
 	if (isSameZone('America/Chihuahua', 'America/Ojinaga')) {
 		warn('Merge <code>America/Chihuahua</code> and <code>America/Ojinaga</code>!');
