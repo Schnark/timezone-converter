@@ -112,7 +112,7 @@ function isSameZoneFuture (name1, name2) {
 
 function checkMissingZones (usedZones) {
 	var omitted = [
-		//too small
+		//too small (some could be moved to links instead)
 		'Africa/Ceuta',
 		'America/Anguilla',
 		'America/Antigua',
@@ -208,9 +208,10 @@ function checkMissingZones (usedZones) {
 		//United States 2019
 		'America/Metlakatla': 'America/Anchorage',
 		//Mexico 2022
-		'America/Mazatlan': 'America/Hermosillo'
+		'America/Mazatlan': 'America/Hermosillo',
+		'America/Ojinaga': 'America/Matamoros'
 	}, links = {
-		'America/Araguaina': 'America/Fortaleza',
+		//Argentina
 		'America/Argentina/Catamarca': 'America/Argentina/Buenos_Aires',
 		'America/Argentina/Cordoba': 'America/Argentina/Buenos_Aires',
 		'America/Argentina/Jujuy': 'America/Argentina/Buenos_Aires',
@@ -222,20 +223,71 @@ function checkMissingZones (usedZones) {
 		'America/Argentina/San_Luis': 'America/Argentina/Buenos_Aires',
 		'America/Argentina/Tucuman': 'America/Argentina/Buenos_Aires',
 		'America/Argentina/Ushuaia': 'America/Argentina/Buenos_Aires',
-		'America/Bahia': 'America/Fortaleza',
-		'America/Bahia_Banderas': 'America/Mexico_City',
-		'America/Belem': 'America/Fortaleza',
+		//Australia
+		'Australia/Broken_Hill': 'Australia/Adelaide',
+		'Australia/Hobart': 'Australia/Sydney',
+		'Australia/Lindeman': 'Australia/Brisbane',
+		'Australia/Melbourne': 'Australia/Sydney',
+		//Brazil
+		'America/Araguaina': 'America/Bahia',
+		'America/Belem': 'America/Bahia',
 		'America/Boa_Vista': 'America/Manaus',
-		'America/Boise': 'America/Denver',
-		'America/Cambridge_Bay': 'America/Edmonton',
-		'America/Creston': 'America/Fort_Nelson',
 		'America/Cuiaba': 'America/Campo_Grande',
-		'America/Dawson': 'America/Whitehorse',
-		'America/Dawson_Creek': 'America/Fort_Nelson',
-		'America/Detroit': 'America/New_York',
 		'America/Eirunepe': 'America/Rio_Branco',
+		'America/Fortaleza': 'America/Bahia',
+		'America/Maceio': 'America/Bahia',
+		'America/Porto_Velho': 'America/Manaus',
+		'America/Recife': 'America/Bahia',
+		'America/Santarem': 'America/Bahia',
+		//Canada
+		'America/Cambridge_Bay': 'America/Edmonton',
+		'America/Creston': 'America/Dawson_Creek',
+		'America/Dawson': 'America/Whitehorse',
+		'America/Fort_Nelson': 'America/Dawson_Creek',
 		'America/Glace_Bay': 'America/Halifax',
 		'America/Goose_Bay': 'America/Halifax',
+		'America/Inuvik': 'America/Edmonton',
+		'America/Iqaluit': 'America/Toronto',
+		'America/Moncton': 'America/Halifax',
+		'America/Rankin_Inlet': 'America/Winnipeg',
+		'America/Resolute': 'America/Winnipeg',
+		'America/Swift_Current': 'America/Regina',
+		'America/Yellowknife': 'America/Edmonton',
+		//Indonesia
+		'Asia/Pontianak': 'Asia/Jakarta',
+		//Kazakhstan
+		'Asia/Aqtau': 'Asia/Aqtobe',
+		'Asia/Atyrau': 'Asia/Aqtobe',
+		'Asia/Oral': 'Asia/Aqtobe',
+		'Asia/Qostanay': 'Asia/Almaty',
+		//Mongolia
+		'Asia/Choibalsan': 'Asia/Ulaanbaatar',
+		//Mexico
+		'America/Bahia_Banderas': 'America/Mexico_City',
+		'America/Merida': 'America/Mexico_City',
+		'America/Monterrey': 'America/Mexico_City',
+		//Malaysia
+		'Asia/Kuching': 'Asia/Kuala_Lumpur',
+		//Palestine
+		'Asia/Hebron': 'Asia/Gaza',
+		//Russia
+		'Asia/Anadyr': 'Asia/Kamchatka',
+		'Asia/Barnaul': 'Asia/Novosibirsk',
+		'Asia/Chita': 'Asia/Yakutsk',
+		'Asia/Khandyga': 'Asia/Yakutsk',
+		'Asia/Krasnoyarsk': 'Asia/Novosibirsk',
+		'Asia/Novokuznetsk': 'Asia/Novosibirsk',
+		'Asia/Sakhalin': 'Asia/Magadan', //TODO should we swap these?
+		'Asia/Srednekolymsk': 'Asia/Magadan',
+		'Asia/Tomsk': 'Asia/Novosibirsk',
+		'Asia/Ust-Nera': 'Asia/Vladivostok',
+		'Europe/Astrakhan': 'Europe/Samara',
+		'Europe/Kirov': 'Europe/Moscow',
+		'Europe/Saratov': 'Europe/Samara',
+		'Europe/Ulyanovsk': 'Europe/Samara',
+		//United States
+		'America/Boise': 'America/Denver',
+		'America/Detroit': 'America/New_York',
 		'America/Indiana/Indianapolis': 'America/New_York',
 		'America/Indiana/Knox': 'America/Chicago',
 		'America/Indiana/Marengo': 'America/New_York',
@@ -244,57 +296,28 @@ function checkMissingZones (usedZones) {
 		'America/Indiana/Vevay': 'America/New_York',
 		'America/Indiana/Vincennes': 'America/New_York',
 		'America/Indiana/Winamac': 'America/New_York',
-		'America/Inuvik': 'America/Edmonton',
-		'America/Iqaluit': 'America/Toronto',
 		'America/Juneau': 'America/Anchorage',
 		'America/Kentucky/Louisville': 'America/New_York',
 		'America/Kentucky/Monticello': 'America/New_York',
-		'America/Maceio': 'America/Fortaleza',
 		'America/Menominee': 'America/Chicago',
-		'America/Merida': 'America/Mexico_City',
-		'America/Moncton': 'America/Halifax',
-		'America/Monterrey': 'America/Mexico_City',
 		'America/Nome': 'America/Anchorage',
 		'America/North_Dakota/Beulah': 'America/Chicago',
 		'America/North_Dakota/Center': 'America/Chicago',
 		'America/North_Dakota/New_Salem': 'America/Chicago',
-		'America/Pangnirtung': 'America/Toronto',
-		'America/Porto_Velho': 'America/Manaus',
-		'America/Rankin_Inlet': 'America/Winnipeg',
-		'America/Recife': 'America/Fortaleza',
-		'America/Resolute': 'America/Winnipeg',
-		'America/Santarem': 'America/Fortaleza',
 		'America/Sitka': 'America/Anchorage',
-		'America/Swift_Current': 'America/Regina',
 		'America/Yakutat': 'America/Anchorage',
-		'America/Yellowknife': 'America/Edmonton',
-		'Asia/Anadyr': 'Asia/Kamchatka',
-		'Asia/Aqtau': 'Asia/Aqtobe',
-		'Asia/Atyrau': 'Asia/Aqtobe',
-		'Asia/Barnaul': 'Asia/Novosibirsk',
-		'Asia/Choibalsan': 'Asia/Ulaanbaatar',
-		'Asia/Hebron': 'Asia/Gaza',
-		'Asia/Khandyga': 'Asia/Chita',
-		'Asia/Krasnoyarsk': 'Asia/Novosibirsk',
-		'Asia/Kuching': 'Asia/Kuala_Lumpur',
-		'Asia/Novokuznetsk': 'Asia/Novosibirsk',
-		'Asia/Oral': 'Asia/Aqtobe',
-		'Asia/Pontianak': 'Asia/Jakarta',
-		'Asia/Qostanay': 'Asia/Almaty',
-		'Asia/Sakhalin': 'Asia/Magadan',
-		'Asia/Samarkand': 'Asia/Tashkent',
-		'Asia/Srednekolymsk': 'Asia/Magadan',
-		'Asia/Tomsk': 'Asia/Novosibirsk',
-		'Asia/Ust-Nera': 'Asia/Vladivostok',
-		'Asia/Yakutsk': 'Asia/Chita',
-		'Australia/Broken_Hill': 'Australia/Adelaide',
-		'Australia/Hobart': 'Australia/Sydney',
-		'Australia/Lindeman': 'Australia/Brisbane',
-		'Australia/Melbourne': 'Australia/Sydney',
-		'Europe/Astrakhan': 'Europe/Samara',
-		'Europe/Kirov': 'Europe/Moscow',
-		'Europe/Saratov': 'Europe/Samara',
-		'Europe/Ulyanovsk': 'Europe/Samara'
+		//Uzbekistan
+		'Asia/Samarkand': 'Asia/Tashkent'
+	}, mapMerge = {
+		//Canada
+		'America/Whitehorse': 'America/Dawson_Creek',
+		//Brazil
+		'America/Campo_Grande': 'America/Manaus',
+		'America/Bahia': 'America/Sao_Paulo',
+		//Mexico
+		'America/Chihuahua': 'America/Mexico_City',
+		//Russia
+		'Europe/Volgograd': 'Europe/Moscow'
 	};
 	moment.tz.names().filter(function (name) {
 		return !usedZones[name];
@@ -335,6 +358,20 @@ function checkMissingZones (usedZones) {
 			warn('<code>' + name + '</code> has a link entry though it is deprecated!');
 		}
 	});
+	Object.keys(mapMerge).forEach(function (name) {
+		if (!usedZones[name]) {
+			warn('<code>' + name + '</code> is no longer used in the map!');
+		}
+		if (!usedZones[mapMerge[name]]) {
+			warn('<code>' + mapMerge[name] + '</code> is no longer used in the map!');
+		}
+		if (!isSameZoneFuture(name, mapMerge[name])) {
+			warn('<code>' + name + '</code> and <code>' + mapMerge[name] + '</code> differ currently!');
+		}
+		if (isSameZone(name, mapMerge[name])) {
+			warn('<code>' + name + '</code> can be merged into <code>' + mapMerge[name] + '</code> now!');
+		}
+	});
 }
 
 function checkClasses (usedClasses, style) {
@@ -365,24 +402,6 @@ function checkMap (xml) {
 	}
 	checkMissingZones(usedZones);
 	checkClasses(Object.keys(usedClasses), xml.getElementsByTagName('style')[0].textContent);
-	if (isSameZone('America/Whitehorse', 'America/Fort_Nelson')) {
-		warn('Merge <code>America/Whitehorse</code> and <code>America/Fort_Nelson</code>!');
-	}
-	if (isSameZone('America/Manaus', 'America/Campo_Grande')) {
-		warn('Merge <code>America/Manaus</code> and <code>America/Campo_Grande</code>!');
-	}
-	if (isSameZone('America/Fortaleza', 'America/Sao_Paulo')) {
-		warn('Merge <code>America/Fortaleza</code> and <code>America/Sao_Paulo</code>!');
-	}
-	if (isSameZone('America/Mexico_City', 'America/Chihuahua')) {
-		warn('Merge <code>America/Mexico_City</code> and <code>America/Chihuahua</code>!');
-	}
-	if (isSameZone('America/Chihuahua', 'America/Ojinaga')) {
-		warn('Merge <code>America/Chihuahua</code> and <code>America/Ojinaga</code>!');
-	}
-	if (isSameZone('Europe/Volgograd', 'Europe/Moscow')) {
-		warn('Merge <code>Europe/Volgograd</code> and <code>Europe/Moscow</code>!');
-	}
 	warn('Version: ' + moment.tz.version + '-' + moment.tz.dataVersion);
 }
 
