@@ -252,7 +252,6 @@ function checkMissingZones (usedZones) {
 		'America/Rankin_Inlet': 'America/Winnipeg',
 		'America/Resolute': 'America/Winnipeg',
 		'America/Swift_Current': 'America/Regina',
-		'America/Yellowknife': 'America/Edmonton',
 		//Indonesia
 		'Asia/Pontianak': 'Asia/Jakarta',
 		//Kazakhstan
