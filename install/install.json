@@ -4,7 +4,7 @@
 		"en": "Time Zone Converter – App for Firefox OS",
 		"de": "Time Zone Converter – App für Firefox OS"
 	},
-	"serviceworker": true,
+	"serviceworker": false,
 	"icon": "res/icon-128.png",
 	"screenshots": [
 		"screenshot.png"

@@ -276,8 +276,8 @@ function checkMissingZones (usedZones) {
 		'Asia/Khandyga': 'Asia/Yakutsk',
 		'Asia/Krasnoyarsk': 'Asia/Novosibirsk',
 		'Asia/Novokuznetsk': 'Asia/Novosibirsk',
-		'Asia/Sakhalin': 'Asia/Magadan', //TODO should we swap these?
-		'Asia/Srednekolymsk': 'Asia/Magadan',
+		'Asia/Magadan': 'Asia/Sakhalin',
+		'Asia/Srednekolymsk': 'Asia/Sakhalin',
 		'Asia/Tomsk': 'Asia/Novosibirsk',
 		'Asia/Ust-Nera': 'Asia/Vladivostok',
 		'Europe/Astrakhan': 'Europe/Samara',
@@ -316,7 +316,9 @@ function checkMissingZones (usedZones) {
 		//Mexico
 		'America/Chihuahua': 'America/Mexico_City',
 		//Russia
-		'Europe/Volgograd': 'Europe/Moscow'
+		'Europe/Volgograd': 'Europe/Moscow',
+		//Greenland
+		'America/Scoresbysund': 'America/Nuuk'
 	};
 	moment.tz.names().filter(function (name) {
 		return !usedZones[name];

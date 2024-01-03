@@ -10,11 +10,6 @@
 <link rel="shortcut icon" href="icons/favicon.ico">
 <meta name="msapplication-config" content="icons/browserconfig.xml">
 <meta name="theme-color" content="#ffffff">
-<script>
-if (navigator.serviceWorker && !(navigator.mozApps && navigator.mozApps.installPackage)) {
-	navigator.serviceWorker.register('sw.js');
-}
-</script>
 <link rel="stylesheet" href="res/app.css">
 <script src="res/lib/moment.min.js" defer></script>
 <script src="res/lib/moment-timezone-with-data-10-year-range.min.js" defer></script>
@@ -44,7 +39,7 @@ if (navigator.serviceWorker && !(navigator.mozApps && navigator.mozApps.installP
 </ul>
 </fieldset>
 </form>
-<footer><small>Time zone data provided by <a rel="noopener" target="_blank" href="https://momentjs.com/timezone/">moment-timezone.js 0.5.43-2023c</a>.</small></footer>
+<footer><small>Time zone data provided by <a rel="noopener" target="_blank" href="https://momentjs.com/timezone/">moment-timezone.js 0.5.44-2023d</a>.</small></footer>
 <div id="map-container">
 <input type="button" value="x" id="map-close">
 <iframe id="map" src="res/tzmap.svg"></iframe>
