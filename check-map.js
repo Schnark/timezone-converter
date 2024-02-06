@@ -203,8 +203,6 @@ function checkMissingZones (usedZones) {
 		//Zone changes for some regions (too lazy to split the map, most areas are small, anyway)
 		//some changed several times, only last change is noted
 		//move them to "links" as soon as they fall out of the ±5 year range
-		//Kazakhstan 2018
-		'Asia/Qyzylorda': 'Asia/Aqtobe',
 		//United States 2019
 		'America/Metlakatla': 'America/Anchorage',
 		//Mexico 2022
@@ -259,6 +257,7 @@ function checkMissingZones (usedZones) {
 		'Asia/Atyrau': 'Asia/Aqtobe',
 		'Asia/Oral': 'Asia/Aqtobe',
 		'Asia/Qostanay': 'Asia/Almaty',
+		'Asia/Qyzylorda': 'Asia/Aqtobe',
 		//Mongolia
 		'Asia/Choibalsan': 'Asia/Ulaanbaatar',
 		//Mexico
@@ -318,7 +317,9 @@ function checkMissingZones (usedZones) {
 		//Russia
 		'Europe/Volgograd': 'Europe/Moscow',
 		//Greenland
-		'America/Scoresbysund': 'America/Nuuk'
+		'America/Scoresbysund': 'America/Nuuk',
+		//Kazakhstan 2024
+		'Asia/Aqtobe': 'Asia/Almaty'
 	};
 	moment.tz.names().filter(function (name) {
 		return !usedZones[name];
