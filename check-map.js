@@ -203,8 +203,6 @@ function checkMissingZones (usedZones) {
 		//Zone changes for some regions (too lazy to split the map, most areas are small, anyway)
 		//some changed several times, only last change is noted
 		//move them to "links" as soon as they fall out of the ±5 year range
-		//United States 2019
-		'America/Metlakatla': 'America/Anchorage',
 		//Mexico 2022
 		'America/Mazatlan': 'America/Hermosillo',
 		'America/Ojinaga': 'America/Matamoros'
@@ -227,16 +225,18 @@ function checkMissingZones (usedZones) {
 		'Australia/Lindeman': 'Australia/Brisbane',
 		'Australia/Melbourne': 'Australia/Sydney',
 		//Brazil
-		'America/Araguaina': 'America/Bahia',
-		'America/Belem': 'America/Bahia',
+		'America/Araguaina': 'America/Sao_Paulo',
+		'America/Bahia': 'America/Sao_Paulo',
+		'America/Belem': 'America/Sao_Paulo',
 		'America/Boa_Vista': 'America/Manaus',
-		'America/Cuiaba': 'America/Campo_Grande',
+		'America/Campo_Grande': 'America/Manaus',
+		'America/Cuiaba': 'America/Manaus',
 		'America/Eirunepe': 'America/Rio_Branco',
-		'America/Fortaleza': 'America/Bahia',
-		'America/Maceio': 'America/Bahia',
+		'America/Fortaleza': 'America/Sao_Paulo',
+		'America/Maceio': 'America/Sao_Paulo',
 		'America/Porto_Velho': 'America/Manaus',
-		'America/Recife': 'America/Bahia',
-		'America/Santarem': 'America/Bahia',
+		'America/Recife': 'America/Sao_Paulo',
+		'America/Santarem': 'America/Sao_Paulo',
 		//Canada
 		'America/Cambridge_Bay': 'America/Edmonton',
 		'America/Creston': 'America/Dawson_Creek',
@@ -258,8 +258,6 @@ function checkMissingZones (usedZones) {
 		'Asia/Oral': 'Asia/Aqtobe',
 		'Asia/Qostanay': 'Asia/Almaty',
 		'Asia/Qyzylorda': 'Asia/Aqtobe',
-		//Mongolia
-		'Asia/Choibalsan': 'Asia/Ulaanbaatar',
 		//Mexico
 		'America/Bahia_Banderas': 'America/Mexico_City',
 		'America/Merida': 'America/Mexico_City',
@@ -298,6 +296,7 @@ function checkMissingZones (usedZones) {
 		'America/Kentucky/Louisville': 'America/New_York',
 		'America/Kentucky/Monticello': 'America/New_York',
 		'America/Menominee': 'America/Chicago',
+		'America/Metlakatla': 'America/Anchorage',
 		'America/Nome': 'America/Anchorage',
 		'America/North_Dakota/Beulah': 'America/Chicago',
 		'America/North_Dakota/Center': 'America/Chicago',
@@ -309,9 +308,6 @@ function checkMissingZones (usedZones) {
 	}, mapMerge = {
 		//Canada
 		'America/Whitehorse': 'America/Dawson_Creek',
-		//Brazil
-		'America/Campo_Grande': 'America/Manaus',
-		'America/Bahia': 'America/Sao_Paulo',
 		//Mexico
 		'America/Chihuahua': 'America/Mexico_City',
 		//Russia
@@ -320,6 +316,8 @@ function checkMissingZones (usedZones) {
 		'America/Scoresbysund': 'America/Nuuk',
 		//Kazakhstan 2024
 		'Asia/Aqtobe': 'Asia/Almaty'
+		//we could also already merge Europe/Famagusta into Europe/Nicosia,
+		//but as that is a defacto political border, keep it just as it is
 	};
 	moment.tz.names().filter(function (name) {
 		return !usedZones[name];
