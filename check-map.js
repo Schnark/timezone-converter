@@ -240,7 +240,7 @@ function checkMissingZones (usedZones) {
 		//Canada
 		'America/Cambridge_Bay': 'America/Edmonton',
 		'America/Creston': 'America/Dawson_Creek',
-		'America/Dawson': 'America/Whitehorse',
+		'America/Dawson': 'America/Dawson_Creek',
 		'America/Fort_Nelson': 'America/Dawson_Creek',
 		'America/Glace_Bay': 'America/Halifax',
 		'America/Goose_Bay': 'America/Halifax',
@@ -250,6 +250,7 @@ function checkMissingZones (usedZones) {
 		'America/Rankin_Inlet': 'America/Winnipeg',
 		'America/Resolute': 'America/Winnipeg',
 		'America/Swift_Current': 'America/Regina',
+		'America/Whitehorse': 'America/Dawson_Creek',
 		//Indonesia
 		'Asia/Pontianak': 'Asia/Jakarta',
 		//Kazakhstan
@@ -281,6 +282,7 @@ function checkMissingZones (usedZones) {
 		'Europe/Kirov': 'Europe/Moscow',
 		'Europe/Saratov': 'Europe/Samara',
 		'Europe/Ulyanovsk': 'Europe/Samara',
+		'Europe/Volgograd': 'Europe/Moscow',
 		//United States
 		'America/Boise': 'America/Denver',
 		'America/Detroit': 'America/New_York',
@@ -306,12 +308,8 @@ function checkMissingZones (usedZones) {
 		//Uzbekistan
 		'Asia/Samarkand': 'Asia/Tashkent'
 	}, mapMerge = {
-		//Canada
-		'America/Whitehorse': 'America/Dawson_Creek',
 		//Mexico
 		'America/Chihuahua': 'America/Mexico_City',
-		//Russia
-		'Europe/Volgograd': 'Europe/Moscow',
 		//Greenland
 		'America/Scoresbysund': 'America/Nuuk',
 		//Kazakhstan 2024
