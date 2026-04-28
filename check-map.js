@@ -315,7 +315,9 @@ function checkMissingZones (usedZones) {
 		//Kazakhstan 2024
 		'Asia/Aqtobe': 'Asia/Almaty',
 		//Chile 2025
-		'America/Coyhaique': 'America/Punta_Arenas'
+		'America/Coyhaique': 'America/Punta_Arenas',
+		//Canada 2026
+		'America/Dawson_Creek': 'America/Vancouver'
 		//we could also already merge Europe/Famagusta into Europe/Nicosia,
 		//but as that is a defacto political border, keep it just as it is
 	};
