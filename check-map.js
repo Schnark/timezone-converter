@@ -238,13 +238,12 @@ function checkMissingZones (usedZones) {
 		'America/Recife': 'America/Sao_Paulo',
 		'America/Santarem': 'America/Sao_Paulo',
 		//Canada
-		'America/Cambridge_Bay': 'America/Edmonton',
+		'America/Cambridge_Bay': 'America/Inuvik',
 		'America/Creston': 'America/Dawson_Creek',
 		'America/Dawson': 'America/Dawson_Creek',
 		'America/Fort_Nelson': 'America/Dawson_Creek',
 		'America/Glace_Bay': 'America/Halifax',
 		'America/Goose_Bay': 'America/Halifax',
-		'America/Inuvik': 'America/Edmonton',
 		'America/Iqaluit': 'America/Toronto',
 		'America/Moncton': 'America/Halifax',
 		'America/Rankin_Inlet': 'America/Winnipeg',
@@ -317,7 +316,8 @@ function checkMissingZones (usedZones) {
 		//Chile 2025
 		'America/Coyhaique': 'America/Punta_Arenas',
 		//Canada 2026
-		'America/Dawson_Creek': 'America/Vancouver'
+		'America/Dawson_Creek': 'America/Vancouver',
+		'America/Regina': 'America/Edmonton'
 		//we could also already merge Europe/Famagusta into Europe/Nicosia,
 		//but as that is a defacto political border, keep it just as it is
 	};
